@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Joseph Morgan is a software developer crafting thoughtful digital products with care." />
+  <title>Joseph Morgan | Software Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #18342a;
+      --deep: #102a22;
+      --pine: #24523c;
+      --fern: #779b70;
+      --moss: #b6c59a;
+      --cream: #f2eee4;
+      --paper: #fbfaf5;
+      --clay: #bd7658;
+      --line: rgba(24, 52, 42, .16);
+      --shadow: 0 18px 50px rgba(26, 52, 40, .12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'DM Sans', sans-serif; line-height: 1.6; }
+    img { display: block; width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { color: inherit; font: inherit; }
+    .container { width: min(1160px, calc(100% - 48px)); margin: 0 auto; }
+    .eyebrow { color: var(--clay); font-family: 'DM Mono', monospace; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; }
+    .section-heading { max-width: 630px; margin-bottom: 52px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { color: var(--deep); font-family: 'Fraunces', Georgia, serif; font-weight: 600; line-height: 1.05; }
+    h2 { font-size: clamp(2.6rem, 5vw, 4.3rem); letter-spacing: -.04em; margin-bottom: 18px; }
+    h3 { font-size: 1.45rem; margin-bottom: 10px; }
+    .muted { color: #5c7163; }
+
+    .site-header { position: absolute; inset: 0 0 auto; z-index: 5; color: var(--cream); }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 28px 0; }
+    .brand { display: flex; align-items: center; gap: 11px; font-family: 'DM Mono', monospace; font-size: .85rem; }
+    .brand-mark { display: grid; place-items: center; width: 30px; height: 30px; border: 1px solid rgba(242, 238, 228, .65); border-radius: 50%; font-family: 'Fraunces', serif; font-size: 1.05rem; }
+    .nav-links { display: flex; align-items: center; gap: 34px; font-size: .82rem; }
+    .nav-links a { opacity: .84; transition: opacity .2s ease; }
+    .nav-links a:hover { opacity: 1; }
+    .nav-cta { border-bottom: 1px solid var(--moss); color: var(--moss); padding-bottom: 3px; }
+    .nav-toggle { display: none; border: 0; background: transparent; cursor: pointer; color: inherit; }
+
+    .hero { position: relative; min-height: 750px; overflow: hidden; background: var(--deep); color: var(--cream); }
+    .hero::before { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(12, 36, 28, .94) 0%, rgba(16, 42, 34, .68) 46%, rgba(16, 42, 34, .32) 100%), url('https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=2200&q=85') center / cover; content: ''; }
+    .hero::after { position: absolute; right: -10%; bottom: -36%; width: 70%; height: 70%; border: 1px solid rgba(182, 197, 154, .18); border-radius: 50%; content: ''; transform: rotate(-14deg); }
+    .hero-content { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1fr) 270px; gap: 50px; align-items: end; min-height: 750px; padding: 150px 0 86px; }
+    .hero-copy { max-width: 750px; }
+    .hero .eyebrow { color: var(--moss); margin-bottom: 22px; }
+    .hero h1 { max-width: 730px; color: var(--cream); font-size: clamp(4rem, 9vw, 8.5rem); letter-spacing: -.075em; margin-bottom: 28px; }
+    .hero h1 em { color: var(--moss); font-style: normal; }
+    .hero-intro { max-width: 475px; color: rgba(242, 238, 228, .78); font-size: 1.05rem; }
+    .hero-aside { border-left: 1px solid rgba(182, 197, 154, .45); padding-left: 22px; }
+    .hero-aside p { color: rgba(242, 238, 228, .68); font-size: .8rem; }
+    .scroll-note { display: flex; align-items: center; gap: 12px; margin-top: 58px; color: var(--moss); font-family: 'DM Mono', monospace; font-size: .68rem; letter-spacing: .09em; text-transform: uppercase; }
+    .scroll-note span { width: 42px; height: 1px; background: var(--moss); }
+
+    .about { background: var(--cream); padding: 120px 0; }
+    .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 100px; align-items: start; }
+    .about-photo { position: relative; max-width: 390px; margin-top: 14px; }
+    .about-photo img { aspect-ratio: 4 / 5; object-fit: cover; filter: saturate(.72); }
+    .photo-caption { position: absolute; right: -35px; bottom: -20px; width: 145px; padding: 16px; background: var(--clay); color: var(--cream); font-family: 'DM Mono', monospace; font-size: .66rem; line-height: 1.35; }
+    .about-copy p { max-width: 620px; color: #53685a; font-size: 1.1rem; }
+    .signature { margin-top: 34px; color: var(--pine); font-family: 'Fraunces', serif; font-size: 1.9rem; font-style: italic; }
+    .skills { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 34px; }
+    .skill { border: 1px solid var(--line); border-radius: 100px; padding: 8px 14px; color: #53685a; font-family: 'DM Mono', monospace; font-size: .7rem; }
+
+    .work { padding: 125px 0; }
+    .work-top { display: flex; align-items: end; justify-content: space-between; gap: 30px; }
+    .work-top .section-heading { margin-bottom: 0; }
+    .view-all { display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--pine); padding-bottom: 7px; font-family: 'DM Mono', monospace; font-size: .72rem; white-space: nowrap; }
+    .arrow { color: var(--clay); font-size: 1.1rem; }
+    .project-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; margin-top: 72px; }
+    .project { position: relative; grid-column: span 7; overflow: hidden; background: var(--cream); }
+    .project:nth-child(2) { grid-column: span 5; margin-top: 90px; }
+    .project:nth-child(3) { grid-column: span 5; margin-top: -40px; }
+    .project:nth-child(4) { grid-column: span 7; }
+    .project-image { aspect-ratio: 1.55; overflow: hidden; }
+    .project:nth-child(2) .project-image, .project:nth-child(3) .project-image { aspect-ratio: 1.15; }
+    .project-image img { height: 100%; object-fit: cover; filter: saturate(.75); transition: transform .6s ease; }
+    .project:hover .project-image img { transform: scale(1.04); }
+    .project-body { display: flex; align-items: start; justify-content: space-between; gap: 20px; padding: 20px 2px 0; }
+    .project-body h3 { margin-bottom: 3px; }
+    .project-type { color: var(--clay); font-family: 'DM Mono', monospace; font-size: .65rem; text-transform: uppercase; }
+    .project-link { flex: none; color: var(--pine); font-family: 'DM Mono', monospace; font-size: .7rem; }
+
+    .now { background: var(--pine); color: var(--cream); padding: 86px 0; }
+    .now-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 80px; }
+    .now h2 { color: var(--cream); font-size: clamp(2.6rem, 5vw, 4rem); }
+    .now .eyebrow { color: var(--moss); }
+    .now-copy { color: rgba(242, 238, 228, .72); }
+    .now-list { border-top: 1px solid rgba(242, 238, 228, .25); }
+    .now-item { display: flex; justify-content: space-between; gap: 20px; border-bottom: 1px solid rgba(242, 238, 228, .25); padding: 18px 0; font-family: 'DM Mono', monospace; font-size: .75rem; }
+    .now-item span:last-child { color: var(--moss); }
+
+    .contact { padding: 125px 0 110px; text-align: center; }
+    .contact h2 { max-width: 780px; margin: 16px auto 28px; }
+    .contact-copy { max-width: 450px; margin: 0 auto 32px; color: #5c7163; }
+    .contact-button { display: inline-flex; align-items: center; gap: 13px; background: var(--clay); color: var(--cream); padding: 15px 21px; font-family: 'DM Mono', monospace; font-size: .76rem; transition: background .2s ease, transform .2s ease; }
+    .contact-button:hover { background: var(--pine); transform: translateY(-2px); }
+    .footer { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); padding: 25px 0 34px; color: #6c7b6e; font-family: 'DM Mono', monospace; font-size: .66rem; }
+    .footer-links { display: flex; gap: 22px; }
+
+    @media (max-width: 720px) {
+      .container { width: min(100% - 34px, 560px); }
+      .nav { padding: 22px 0; }
+      .nav-toggle { display: block; font-size: 1.4rem; }
+      .nav-links { display: none; position: absolute; top: 70px; left: 17px; right: 17px; flex-direction: column; align-items: start; gap: 18px; padding: 20px; background: var(--cream); color: var(--ink); box-shadow: var(--shadow); }
+      .nav-links.open { display: flex; }
+      .hero, .hero-content { min-height: 690px; }
+      .hero-content { display: block; padding: 145px 0 60px; }
+      .hero h1 { font-size: clamp(3.7rem, 18vw, 6rem); }
+      .hero-aside { margin-top: 60px; max-width: 250px; }
+      .about { padding: 80px 0; }
+      .about-grid, .now-grid { grid-template-columns: 1fr; gap: 50px; }
+      .about-photo { max-width: 80%; }
+      .work { padding: 85px 0; }
+      .work-top { display: block; }
+      .view-all { width: max-content; margin-top: 28px; }
+      .project-grid { display: block; margin-top: 48px; }
+      .project, .project:nth-child(2), .project:nth-child(3), .project:nth-child(4) { margin: 0 0 48px; }
+      .project-image, .project:nth-child(2) .project-image, .project:nth-child(3) .project-image { aspect-ratio: 1.3; }
+      .now { padding: 70px 0; }
+      .contact { padding: 85px 0 75px; }
+      .footer { display: block; }
+      .footer-links { margin-top: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#top"><span class="brand-mark">A</span> Joseph Morgan</a>
+      <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">&#9776;</button>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#work">Selected work</a>
+        <a class="nav-cta" href="#contact">Let's talk <span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-content container">
+        <div class="hero-copy">
+          <p class="eyebrow">Software developer · Portland, OR</p>
+          <h1>Building things with <em>roots.</em></h1>
+          <p class="hero-intro">I’m Joseph, a developer who turns thoughtful ideas into useful, quietly delightful digital products.</p>
+          <a class="scroll-note" href="#work"><span></span> Explore my work ↓</a>
+        </div>
+        <aside class="hero-aside">
+          <p>Currently tending to</p>
+          <strong>Product experiences<br />at the edge of the web.</strong>
+        </aside>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="about-grid container">
+        <div class="about-photo">
+          <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=900&q=85" alt="Portrait of Joseph Morgan" />
+          <div class="photo-caption">Part human,<br />part keyboard<br />enthusiast.</div>
+        </div>
+        <div class="about-copy">
+          <div class="section-heading">
+            <p class="eyebrow">A little about me</p>
+            <h2>Curious by nature.</h2>
+          </div>
+          <p>I care about the space where engineering meets everyday life. My favorite work makes complicated things feel calm, gives people room to think, and leaves the codebase kinder than I found it.</p>
+          <p>When I’m away from my desk, you’ll find me wandering a trail, overwatering houseplants, or making a very strong case for semantic HTML.</p>
+          <p class="signature">Joseph</p>
+          <div class="skills" aria-label="Skills">
+            <span class="skill">React</span><span class="skill">TypeScript</span><span class="skill">Node.js</span><span class="skill">Design systems</span><span class="skill">Accessibility</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="work" id="work">
+      <div class="container">
+        <div class="work-top">
+          <div class="section-heading">
+            <p class="eyebrow">Selected work</p>
+            <h2>Small details,<br />big picture.</h2>
+          </div>
+          <a class="view-all" href="#contact">View résumé <span class="arrow">↗</span></a>
+        </div>
+        <div class="project-grid">
+          <article class="project">
+            <div class="project-image"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=85" alt="Mobile banking app on a phone" /></div>
+            <div class="project-body"><div><h3>Fallow Finance</h3><span class="project-type">Product design · 2024</span></div><a class="project-link" href="#contact" aria-label="Read the Fallow Finance case study">Case study ↗</a></div>
+          </article>
+          <article class="project">
+            <div class="project-image"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=85" alt="Laptop showing a collaborative workspace" /></div>
+            <div class="project-body"><div><h3>Common Ground</h3><span class="project-type">Web app · 2023</span></div><a class="project-link" href="#contact" aria-label="Read the Common Ground case study">Case study ↗</a></div>
+          </article>
+          <article class="project">
+            <div class="project-image"><img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1000&q=85" alt="Bright studio workspace with plants" /></div>
+            <div class="project-body"><div><h3>Canopy Studio</h3><span class="project-type">Design system · 2023</span></div><a class="project-link" href="#contact" aria-label="Read the Canopy Studio case study">Case study ↗</a></div>
+          </article>
+          <article class="project">
+            <div class="project-image"><img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=85" alt="Team collaborating around a table" /></div>
+            <div class="project-body"><div><h3>Field Notes</h3><span class="project-type">Open source · 2022</span></div><a class="project-link" href="#contact" aria-label="Read the Field Notes case study">Case study ↗</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="now">
+      <div class="now-grid container">
+        <div><p class="eyebrow">The current season</p><h2>Learning in public.</h2><p class="now-copy">A few things occupying my attention lately, in the best possible way.</p></div>
+        <div class="now-list"><div class="now-item"><span>Reading</span><span>Designing Data-Intensive Applications</span></div><div class="now-item"><span>Exploring</span><span>Generative interfaces</span></div><div class="now-item"><span>Practicing</span><span>Better technical writing</span></div></div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container"><p class="eyebrow">Have a good one?</p><h2>Let’s grow something useful together.</h2><p class="contact-copy">I’m always happy to hear about thoughtful projects, kind teams, and interesting problems.</p><a class="contact-button" href="mailto:hello@Josephmorgan.dev">Start a conversation <span aria-hidden="true">↗</span></a></div>
+    </section>
+  </main>
+
+  <footer class="footer container"><span>© 2025 Joseph Morgan</span><div class="footer-links"><a href="#top">LinkedIn</a><a href="#top">GitHub</a><a href="#top">Back to top ↑</a></div></footer>
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => {
+      const isOpen = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+    });
+    links.addEventListener('click', (event) => {
+      if (event.target.closest('a')) {
+        links.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  </script>
+</body>
+</html>
